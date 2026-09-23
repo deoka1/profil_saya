@@ -1,149 +1,321 @@
 <div align="center">
 
+<br>
+
+# WELCOME TO MY PORTFOLIO
+
+<img src="https://readme-typing-svg.demolab.com?font=Righteous&weight=900&size=50&duration=1300&pause=500&color=FF1493&center=true&vCenter=true&width=1000&height=100&lines=HALO+GAES+%F0%9F%97%BF;WELCOME+TO+MY+GITHUB;JANGAN+TAKUT+MASUK;SAYA+JUGA+TAKUT+SAMA+ERROR" alt="Typing">
+
+<br>
+
 # I MADE OKA WALI PUTRA
 
-### COMPUTER ENGINEERING STUDENT • WEB DEVELOPER • TECH ENTHUSIAST
+### MAHASISWA TEKNIK KOMPUTER
+
+### CALON ORANG SUKSES
+
+### TAPI SEKARANG MASIH DEBUGGING
 
 <br>
 
-<img src="https://readme-typing-svg.demolab.com?font=Righteous&weight=900&size=38&duration=1800&pause=700&color=00F5FF&center=true&vCenter=true&width=900&height=80&lines=WELCOME+TO+MY+PORTFOLIO;WEB+DEVELOPER;COMPUTER+ENGINEERING+STUDENT;LET'S+BUILD+SOMETHING+COOL" alt="Typing Animation">
+<img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="300">
 
 <br>
 
----
+# TENTANG SAYA
 
-# ABOUT ME
+### SAYA SUKA CODING
 
-I'M A COMPUTER ENGINEERING STUDENT WHO LOVES BUILDING
-WEBSITES, INFORMATION SYSTEMS, IOT PROJECTS, AND RANDOM THINGS
-THAT SOMETIMES WORK ON THE FIRST TRY.
+### SAYA SUKA NGODING SAMPAI PAGI
 
-CURRENTLY LEARNING, BUILDING, BREAKING,
-AND FIXING THINGS ONE ERROR AT A TIME.
+### SAYA SUKA ERROR
+
+### TAPI ERROR TIDAK SUKA SAYA
 
 <br>
 
-# SKILLS
+### KALAU PROGRAM BERHASIL:
 
-### WEB DEVELOPMENT
+# "WAH GILA JAGO"
 
-`HTML` `CSS` `JAVASCRIPT` `PHP` `LARAVEL`
+### KALAU ERROR:
 
-### DATABASE
+# "INI SIAPA YANG BIKIN?"
 
-`MYSQL` `MARIADB`
+### PADAHAL...
 
-### IOT & EMBEDDED
-
-`ESP32` `ARDUINO` `MQTT` `NODE-RED`
-
-### TOOLS
-
-`VS CODE` `GIT` `GITHUB` `LARAGON`
+# SAYA SENDIRI.
 
 <br>
 
 ---
 
-# FEATURED PROJECTS
+# KEAHLIAN SAYA
+
+### HTML
+
+████████████████████ 100%
+
+### CSS
+
+██████████████████░░ 90%
+
+### JAVASCRIPT
+
+██████████████░░░░░░ 70%
+
+### PHP
+
+████████████████░░░░ 80%
+
+### LARAVEL
+
+███████████████░░░░░ 75%
+
+### DEBUGGING
+
+████████████████████ 999%
+
+<br>
+
+> LEVEL DEBUGGING TIDAK BISA DIUKUR DENGAN MATEMATIKA.
+
+<br>
+
+---
+
+# PROJECT SAYA
 
 ## SIPERPUS
 
-### SISTEM INFORMASI PERPUSTAKAAN BERBASIS WEB
+### WEBSITE PERPUSTAKAAN
 
-WEBSITE MANAJEMEN PERPUSTAKAAN DENGAN FITUR
-MANAJEMEN BUKU, ANGGOTA, PEMINJAMAN, BOOKING, DAN DASHBOARD ADMIN.
+### MASALAH:
 
-`LARAVEL` `PHP` `MYSQL` `BLADE`
+BUKU HILANG.
 
-<br>
+### SOLUSI:
 
-## JEEP BATUR HORIZON
+BUAT WEBSITE.
 
-### WEBSITE TOUR & ADVENTURE GUNUNG BATUR
+### MASALAH BARU:
 
-WEBSITE PROMOSI DAN BOOKING JEEP ADVENTURE
-DENGAN KONSEP MODERN, RESPONSIVE, DAN BOOKING MELALUI WHATSAPP.
+BUG.
 
-`HTML` `TAILWIND CSS` `JAVASCRIPT`
+### SOLUSI:
 
-<br>
+BUAT BUG FIXER.
 
-## IOT WATER MONITORING
+### MASALAH BARU LAGI:
 
-### SISTEM MONITORING PENGGUNAAN AIR
+BUG FIXER-NYA ERROR.
 
-KONSEP SISTEM MONITORING BERBASIS IOT
-MENGGUNAKAN ESP32, SENSOR, MQTT, NODE-RED, DAN DASHBOARD WEB.
+### SOLUSI TERAKHIR:
 
-`ESP32` `MQTT` `NODE-RED` `LARAVEL`
+# MINUM KOPI.
 
 <br>
 
 ---
 
-# MY GITHUB JOURNEY
+# JEEP BATUR HORIZON
 
-<img src="https://github-readme-stats.vercel.app/api?username=USERNAME_KAMU&show_icons=true&theme=tokyonight&hide_border=true" width="450">
+### WEBSITE TOUR JEEP GUNUNG BATUR
 
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=USERNAME_KAMU&theme=tokyonight&hide_border=true" width="450">
+### TARGET:
+
+MEMBAWA ORANG MELIHAT SUNRISE.
+
+### BONUS:
+
+MEMBAWA DEVELOPER MELIHAT ERROR.
+
+<br>
+
+<img src="https://readme-typing-svg.demolab.com?font=Righteous&weight=900&size=35&duration=1000&pause=300&color=00FF00&center=true&vCenter=true&width=900&height=80&lines=JEEP+STARTED;JEEP+IS+FAST;JEEP+IS+GONE;DEVELOPER+MASIH+CODING" alt="Jeep">
+
+<br>
+
+# 🚙💨💨💨💨💨
 
 <br>
 
 ---
 
-# CURRENTLY BUILDING
+# IOT PROJECT
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=25&duration=2000&pause=800&color=7C3AED&center=true&vCenter=true&width=800&height=70&lines=WEBSITE;IOT+PROJECTS;LARAVEL+PROJECTS;PERSONAL+PORTFOLIO;SOMETHING+RANDOM+%F0%9F%97%BF" alt="Currently Building">
+### ESP32
+
+### SENSOR
+
+### MQTT
+
+### NODE-RED
+
+### DAN...
+
+# KABEL YANG ENTah DARI MANA ASALNYA.
+
+<br>
+
+### KALAU ESP32 MENYALA:
+
+# "ALHAMDULILLAH"
+
+### KALAU TIDAK MENYALA:
+
+# "COBA CABUT PASANG."
+
+### MASIH TIDAK MENYALA:
+
+# "COBA BESOK LAGI."
 
 <br>
 
 ---
 
-# CONTACT
+# KEBIASAAN SAYA SAAT CODING
+
+<br>
+
+### 08:00
+
+# "HARI INI MAU PRODUKTIF."
+
+### 10:00
+
+# "BENTAR, MAU NGOPI."
+
+### 13:00
+
+# "BENTAR LAGI SELESAI."
+
+### 17:00
+
+# "INI KENAPA ERROR?"
+
+### 22:00
+
+# "OH SALAH KETIK."
+
+### 02:00
+
+# "NAH SELESAI."
+
+### 02:01
+
+# "TERNYATA ADA ERROR BARU."
+
+<br>
+
+---
+
+# MOTTO HIDUP
+
+<img src="https://readme-typing-svg.demolab.com?font=Righteous&weight=900&size=40&duration=1200&pause=400&color=FFD700&center=true&vCenter=true&width=1000&height=100&lines=KEEP+CODING;KEEP+LEARNING;KEEP+TRYING;KEEP+GOING;KEEP+COFFEE" alt="Motto">
+
+<br>
+
+# KALAU TIDAK BISA...
+
+# GOOGLE.
+
+# KALAU MASIH TIDAK BISA...
+
+# YOUTUBE.
+
+# KALAU MASIH TIDAK BISA...
+
+# CHATGPT.
+
+# KALAU MASIH TIDAK BISA...
+
+# TIDUR.
+
+<br>
+
+---
+
+# PANTUN KHUSUS DEVELOPER
+
+### PERGI KE PASAR MEMBELI IKAN
+
+### IKANNYA LARI KE DALAM KALI
+
+### KALAU CODING BELUM KELAR
+
+### JANGAN SALAHKAN WIFI
+
+<br>
+
+### NAIK JEEP KE GUNUNG BATUR
+
+### SAMPAI ATAS LIHAT MATAHARI
+
+### KALAU PROGRAM MASIH HANCUR
+
+### YANG PENTING SUDAH BERANI
+
+<br>
+
+### MINUM KOPI MAKAN ROTI
+
+### ROTINYA DIMAKAN BERSAMA
+
+### KALAU KAMU SUDAH DI SINI
+
+### JANGAN LUPA KASIH STAR YA
+
+<br>
+
+---
+
+# SOCIAL MEDIA
 
 ### GITHUB
 
-[VISIT MY GITHUB](https://github.com/USERNAME_KAMU)
+**KALAU MAU LIHAT CODINGAN SAYA**
 
 ### INSTAGRAM
 
-[VISIT MY INSTAGRAM](https://instagram.com/USERNAME_KAMU)
+**KALAU MAU LIHAT KEHIDUPAN SAYA**
 
 ### WHATSAPP
 
-[CONTACT ME](https://wa.me/6289541822441)
+**KALAU MAU NANYA KENAPA KODENYA ERROR**
 
 <br>
 
 ---
 
-# AND FINALLY...
-
-<img src="https://readme-typing-svg.demolab.com?font=Righteous&weight=900&size=45&duration=1500&pause=500&color=FF00FF&center=true&vCenter=true&width=900&height=100&lines=THANK+YOU+FOR+VISITING;SEE+YOU+IN+MY+NEXT+PROJECT;DON'T+FORGET+TO+FOLLOW;NOW+GET+OUT+OF+HERE+%F0%9F%97%BF" alt="Goodbye">
-
-<br>
-
 # TERIMA KASIH SUDAH MAMPIR
 
-### JANGAN LUPA FOLLOW
-
-### JANGAN LUPA STAR
-
-### JANGAN LUPA BALIK LAGI
+<img src="https://readme-typing-svg.demolab.com?font=Righteous&weight=900&size=50&duration=1000&pause=400&color=00FFFF&center=true&vCenter=true&width=1000&height=100&lines=TERIMA+KASIH;MAKASIH+UDAH+MAMPIR;JANGAN+LUPA+FOLLOW;JANGAN+LUPA+STAR;JANGAN+LUPA+BALIK+LAGI" alt="Thank You">
 
 <br>
 
-# 🚗💨💨💨
+# TAPI...
 
-### PORTFOLIO SELESAI.
-
-### MOBILNYA PULANG DULU.
-
-# 🚗💨💨💨💨💨
+## KOK MASIH DI SINI?
 
 <br>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=180&section=footer&text=THANK%20YOU&fontSize=50&fontColor=FFFFFF&fontAlignY=65&animation=twinkling" width="100%">
+# 🗿
+
+### README-NYA SUDAH SELESAI.
+
+### SILAKAN SCROLL KE ATAS LAGI.
+
+### KARENA SAYA JUGA GAK TAU MAU NULIS APA LAGI.
+
+<br>
+
+# 🚗💨💨💨💨💨💨
+
+# BYEEEEEEEEEEEEEEEEEEEE
+
+<br>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=footer&text=SEE%20YOU%20NEXT%20PROJECT&fontSize=40&fontColor=FFFFFF&fontAlignY=65&animation=twinkling" width="100%">
 
 </div>
