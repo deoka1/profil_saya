@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(const ProfilSaya());
@@ -49,6 +50,15 @@ class _PortfolioPageState extends State<PortfolioPage>
   final Color muted = const Color(0xFF9E9E9E);
   final Color dim = const Color(0xFF666666);
 
+  // =========================
+  // 🔗 GANTI LINK SOSMED KAMU DI SINI
+  // =========================
+  final String githubUrl = 'https://github.com/username-kamu';
+  final String instagramUrl = 'https://instagram.com/username-kamu';
+  final String emailUrl = 'mailto:emailkamu@gmail.com';
+  final String linkedinUrl = 'https://linkedin.com/in/username-kamu';
+  final String whatsappUrl = 'https://wa.me/6281234567890';
+
   @override
   void initState() {
     super.initState();
@@ -59,6 +69,25 @@ class _PortfolioPageState extends State<PortfolioPage>
   void dispose() {
     _tabController.dispose();
     super.dispose();
+  }
+
+  // 🔗 Fungsi buka link
+  Future<void> _launchUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    try {
+      if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+        throw Exception('Tidak bisa membuka $url');
+      }
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Gagal membuka link: $e',
+              style: TextStyle(color: accent)),
+          backgroundColor: cardAlt,
+        ),
+      );
+    }
   }
 
   @override
@@ -162,46 +191,103 @@ class _PortfolioPageState extends State<PortfolioPage>
   }
 
   // =========================
-  // PROFILE HEADER (dipakai di semua tab)
+  // PROFILE HEADER DENGAN FOTO
   // =========================
   Widget _buildProfileHeader() {
     return Center(
       child: Column(
         children: [
+          // 📸 Foto profil dengan animasi & ring
           TweenAnimationBuilder<double>(
             tween: Tween(begin: 0, end: 1),
             duration: const Duration(milliseconds: 900),
             curve: Curves.easeOutBack,
             builder: (context, value, child) {
-              return Transform.scale(
-                scale: value,
-                child: Container(
-                  width: 120,
-                  height: 120,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: accent, width: 2),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.white.withOpacity(0.08),
-                        blurRadius: 30,
-                        spreadRadius: 2,
+              return Transform.scale(scale: value, child: child);
+            },
+            child: GestureDetector(
+              onTap: () => _showPhotoDialog(),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  // Glow ring
+                  Container(
+                    width: 140,
+                    height: 140,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      gradient: SweepGradient(
+                        colors: [
+                          Colors.white.withOpacity(0.0),
+                          Colors.white.withOpacity(0.6),
+                          Colors.white.withOpacity(0.0),
+                        ],
+                        stops: const [0.0, 0.5, 1.0],
                       ),
-                    ],
-                  ),
-                  child: CircleAvatar(
-                    backgroundColor: card,
-                    child: Icon(
-                      Icons.person_rounded,
-                      size: 70,
-                      color: accent,
                     ),
                   ),
-                ),
-              );
-            },
+                  // Border ring
+                  Container(
+                    width: 128,
+                    height: 128,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: accent, width: 2),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.white.withOpacity(0.15),
+                          blurRadius: 30,
+                          spreadRadius: 2,
+                        ),
+                      ],
+                    ),
+                  ),
+                  // Foto profil
+                  Container(
+                    width: 116,
+                    height: 116,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: ClipOval(
+                      child: Image.asset(
+                        'assets/profile.jpg',
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stack) {
+                          // Fallback kalau foto belum ada
+                          return Container(
+                            color: card,
+                            child: Icon(
+                              Icons.person_rounded,
+                              size: 60,
+                              color: accent,
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                  // Badge online (opsional)
+                  Positioned(
+                    bottom: 8,
+                    right: 8,
+                    child: Container(
+                      width: 20,
+                      height: 20,
+                      decoration: BoxDecoration(
+                        color: accent,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: bg, width: 3),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
+
           const SizedBox(height: 24),
+
           Text(
             'I MADE OKA WALI PUTRA',
             textAlign: TextAlign.center,
@@ -212,8 +298,9 @@ class _PortfolioPageState extends State<PortfolioPage>
               color: accent,
             ),
           ),
+
           const SizedBox(height: 8),
-          // Typing effect subtitle
+
           _TypingText(
             text: 'Computer Engineering Student',
             style: TextStyle(
@@ -222,7 +309,9 @@ class _PortfolioPageState extends State<PortfolioPage>
               letterSpacing: 1,
             ),
           ),
+
           const SizedBox(height: 14),
+
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
@@ -237,12 +326,120 @@ class _PortfolioPageState extends State<PortfolioPage>
                 const SizedBox(width: 8),
                 Text(
                   'NIM • 202463121004',
-                  style: TextStyle(color: muted, fontSize: 12, letterSpacing: 1),
+                  style: TextStyle(
+                    color: muted,
+                    fontSize: 12,
+                    letterSpacing: 1,
+                  ),
                 ),
               ],
             ),
           ),
+
+          const SizedBox(height: 20),
+
+          // 🔗 Quick social icons di bawah profile
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _iconButton(
+                Icons.code_rounded,
+                'GitHub',
+                githubUrl,
+              ),
+              const SizedBox(width: 12),
+              _iconButton(
+                Icons.camera_alt_outlined,
+                'Instagram',
+                instagramUrl,
+              ),
+              const SizedBox(width: 12),
+              _iconButton(
+                Icons.work_outline,
+                'LinkedIn',
+                linkedinUrl,
+              ),
+              const SizedBox(width: 12),
+              _iconButton(
+                Icons.email_outlined,
+                'Email',
+                emailUrl,
+              ),
+            ],
+          ),
         ],
+      ),
+    );
+  }
+
+  // 🔘 Icon button dengan animasi hover & onTap
+  Widget _iconButton(IconData icon, String tooltip, String url) {
+    return Tooltip(
+      message: tooltip,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: () => _launchUrl(url),
+          borderRadius: BorderRadius.circular(12),
+          child: Container(
+            width: 46,
+            height: 46,
+            decoration: BoxDecoration(
+              color: card,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: border),
+            ),
+            child: Icon(icon, color: accent, size: 20),
+          ),
+        ),
+      ),
+    );
+  }
+
+  // 🖼️ Dialog preview foto fullscreen
+  void _showPhotoDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        backgroundColor: Colors.transparent,
+        insetPadding: const EdgeInsets.all(20),
+        child: GestureDetector(
+          onTap: () => Navigator.pop(context),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: accent, width: 2),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(18),
+              child: Image.asset(
+                'assets/profile.jpg',
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stack) {
+                  return Container(
+                    height: 300,
+                    color: card,
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.broken_image_outlined,
+                              size: 60, color: muted),
+                          const SizedBox(height: 12),
+                          Text(
+                            'Foto belum ditambahkan\nTaruh di assets/profile.jpg',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: muted),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -260,21 +457,18 @@ class _PortfolioPageState extends State<PortfolioPage>
           const SizedBox(height: 45),
           _sectionTitle('ABOUT ME'),
           const SizedBox(height: 12),
-          _fadeIn(
-            Text(
-              'Halo! Saya Oka, mahasiswa Teknik Komputer yang '
-              'tertarik pada pengembangan website, mobile application, '
-              'IoT, dan teknologi digital. Saya senang membuat project '
-              'yang sederhana, modern, dan dapat digunakan secara nyata.',
-              style: TextStyle(
-                fontSize: 15,
-                height: 1.8,
-                color: muted,
-              ),
+          Text(
+            'Halo! Saya Oka, mahasiswa Teknik Komputer yang '
+            'tertarik pada pengembangan website, mobile application, '
+            'IoT, dan teknologi digital. Saya senang membuat project '
+            'yang sederhana, modern, dan dapat digunakan secara nyata.',
+            style: TextStyle(
+              fontSize: 15,
+              height: 1.8,
+              color: muted,
             ),
           ),
           const SizedBox(height: 30),
-          // Quick Info Cards
           Row(
             children: [
               Expanded(
@@ -315,7 +509,6 @@ class _PortfolioPageState extends State<PortfolioPage>
             ],
           ),
           const SizedBox(height: 30),
-          // Stats
           _sectionTitle('STATISTIK'),
           const SizedBox(height: 15),
           Container(
@@ -365,10 +558,8 @@ class _PortfolioPageState extends State<PortfolioPage>
         children: [
           _sectionTitle('MY SKILLS'),
           const SizedBox(height: 8),
-          Text(
-            'Teknologi yang saya kuasai',
-            style: TextStyle(color: dim, fontSize: 13),
-          ),
+          Text('Teknologi yang saya kuasai',
+              style: TextStyle(color: dim, fontSize: 13)),
           const SizedBox(height: 25),
           ...skills.map((s) => _skillBar(
                 s['name'] as String,
@@ -434,10 +625,8 @@ class _PortfolioPageState extends State<PortfolioPage>
         children: [
           _sectionTitle('FEATURED PROJECT'),
           const SizedBox(height: 8),
-          Text(
-            'Beberapa project yang saya kerjakan',
-            style: TextStyle(color: dim, fontSize: 13),
-          ),
+          Text('Beberapa project yang saya kerjakan',
+              style: TextStyle(color: dim, fontSize: 13)),
           const SizedBox(height: 25),
           ...projects.map((p) => _projectCardNew(
                 icon: p['icon'] as IconData,
@@ -464,29 +653,42 @@ class _PortfolioPageState extends State<PortfolioPage>
         children: [
           _sectionTitle('CONNECT WITH ME'),
           const SizedBox(height: 8),
-          Text(
-            'Mari terhubung dan berkolaborasi',
-            style: TextStyle(color: dim, fontSize: 13),
-          ),
+          Text('Klik untuk terhubung langsung',
+              style: TextStyle(color: dim, fontSize: 13)),
           const SizedBox(height: 25),
-          _contactTile(Icons.code, 'GitHub', '@okawaliputra'),
+          _contactTile(
+            Icons.code_rounded,
+            'GitHub',
+            'Lihat repository saya',
+            githubUrl,
+          ),
           const SizedBox(height: 12),
           _contactTile(
             Icons.camera_alt_outlined,
             'Instagram',
-            '@oka.waliputra',
+            'Follow daily updates',
+            instagramUrl,
+          ),
+          const SizedBox(height: 12),
+          _contactTile(
+            Icons.work_outline,
+            'LinkedIn',
+            'Connect professionally',
+            linkedinUrl,
           ),
           const SizedBox(height: 12),
           _contactTile(
             Icons.email_outlined,
             'Email',
-            'oka@example.com',
+            'Kirim pesan langsung',
+            emailUrl,
           ),
           const SizedBox(height: 12),
           _contactTile(
-            Icons.phone_outlined,
-            'Phone',
-            '+62 8xx xxxx xxxx',
+            Icons.chat_bubble_outline,
+            'WhatsApp',
+            'Chat dengan saya',
+            whatsappUrl,
           ),
           const SizedBox(height: 35),
           _sectionTitle('SEND MESSAGE'),
@@ -565,23 +767,6 @@ class _PortfolioPageState extends State<PortfolioPage>
     );
   }
 
-  Widget _fadeIn(Widget child) {
-    return TweenAnimationBuilder<double>(
-      tween: Tween(begin: 0, end: 1),
-      duration: const Duration(milliseconds: 700),
-      builder: (context, value, child) {
-        return Opacity(
-          opacity: value,
-          child: Transform.translate(
-            offset: Offset(0, 20 * (1 - value)),
-            child: child,
-          ),
-        );
-      },
-      child: child,
-    );
-  }
-
   Widget _infoCard(IconData icon, String label, String value) {
     return Container(
       padding: const EdgeInsets.all(16),
@@ -595,10 +780,9 @@ class _PortfolioPageState extends State<PortfolioPage>
         children: [
           Icon(icon, color: muted, size: 20),
           const SizedBox(height: 10),
-          Text(
-            label,
-            style: TextStyle(color: dim, fontSize: 11, letterSpacing: 1),
-          ),
+          Text(label,
+              style:
+                  TextStyle(color: dim, fontSize: 11, letterSpacing: 1)),
           const SizedBox(height: 4),
           Text(
             value,
@@ -625,10 +809,9 @@ class _PortfolioPageState extends State<PortfolioPage>
           ),
         ),
         const SizedBox(height: 4),
-        Text(
-          label,
-          style: TextStyle(color: dim, fontSize: 11, letterSpacing: 1),
-        ),
+        Text(label,
+            style:
+                TextStyle(color: dim, fontSize: 11, letterSpacing: 1)),
       ],
     );
   }
@@ -650,10 +833,8 @@ class _PortfolioPageState extends State<PortfolioPage>
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              Text(
-                '${(level * 100).toInt()}%',
-                style: TextStyle(color: dim, fontSize: 12),
-              ),
+              Text('${(level * 100).toInt()}%',
+                  style: TextStyle(color: dim, fontSize: 12)),
             ],
           ),
           const SizedBox(height: 8),
@@ -694,10 +875,8 @@ class _PortfolioPageState extends State<PortfolioPage>
         borderRadius: BorderRadius.circular(10),
         border: Border.all(color: border),
       ),
-      child: Text(
-        text,
-        style: TextStyle(color: muted, fontSize: 13),
-      ),
+      child: Text(text,
+          style: TextStyle(color: muted, fontSize: 13)),
     );
   }
 
@@ -809,49 +988,74 @@ class _PortfolioPageState extends State<PortfolioPage>
     );
   }
 
-  Widget _contactTile(IconData icon, String label, String value) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: card,
+  // 🔗 Contact tile yang bisa diklik
+  Widget _contactTile(
+    IconData icon,
+    String label,
+    String value,
+    String url,
+  ) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () => _launchUrl(url),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: border),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 44,
-            height: 44,
-            decoration: BoxDecoration(
-              color: cardAlt,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: border),
-            ),
-            child: Icon(icon, color: accent, size: 20),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: card,
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(color: border),
           ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  label,
-                  style: TextStyle(color: dim, fontSize: 11, letterSpacing: 1),
+          child: Row(
+            children: [
+              Container(
+                width: 44,
+                height: 44,
+                decoration: BoxDecoration(
+                  color: cardAlt,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: border),
                 ),
-                const SizedBox(height: 2),
-                Text(
-                  value,
-                  style: TextStyle(
-                    color: accent,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                  ),
+                child: Icon(icon, color: accent, size: 20),
+              ),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      label,
+                      style: TextStyle(
+                        color: accent,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      value,
+                      style: TextStyle(color: dim, fontSize: 12),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: cardAlt,
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: border),
+                ),
+                child: Icon(
+                  Icons.arrow_outward_rounded,
+                  color: muted,
+                  size: 16,
+                ),
+              ),
+            ],
           ),
-          Icon(Icons.arrow_forward_ios_rounded, color: dim, size: 14),
-        ],
+        ),
       ),
     );
   }
@@ -860,10 +1064,9 @@ class _PortfolioPageState extends State<PortfolioPage>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: TextStyle(color: muted, fontSize: 12, letterSpacing: 1),
-        ),
+        Text(label,
+            style:
+                TextStyle(color: muted, fontSize: 12, letterSpacing: 1)),
         const SizedBox(height: 8),
         TextField(
           maxLines: maxLines,
@@ -910,7 +1113,8 @@ class _PortfolioPageState extends State<PortfolioPage>
           const SizedBox(height: 16),
           Text(
             '© 2026 I Made Oka Wali Putra',
-            style: TextStyle(color: dim, fontSize: 12, letterSpacing: 0.5),
+            style:
+                TextStyle(color: dim, fontSize: 12, letterSpacing: 0.5),
           ),
         ],
       ),
